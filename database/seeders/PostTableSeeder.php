@@ -22,5 +22,8 @@ class PostTableSeeder extends Seeder
         $post->user_id = 2;
         $post->save();
 
+
+        $posts = Post::factory()->count(20)->create();
+
     }
 }

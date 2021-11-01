@@ -19,6 +19,7 @@ class UserTableSeeder extends Seeder
         $a->last_name="Andrew";
         $a->username="mark123";
         $a->email="mark12@gmail.com";
+        $a->email_verified_at = "2021-11-01 23:30:06";
         $a->password="mark";
         $a->phone_number="0903454567";
         $a->dob="1990-05-03";
@@ -26,7 +27,7 @@ class UserTableSeeder extends Seeder
         $a->save();
 
 
-        $users = User::factory()->count(20)->create();
+        $users = User::factory()->count(10)->create();
 
     }
 }
