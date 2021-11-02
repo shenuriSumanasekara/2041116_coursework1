@@ -21,7 +21,7 @@ class PostFactory extends Factory
                 'view_count' =>$this->faker->randomDigit(),
                 'like_count' =>$this->faker->randomDigit(),
                 'comment_count' =>$this->faker->randomDigit(),
-                'user_id' =>  User::factory(),
+                'user_id' =>  User::inRandomOrder()->first()->id,
     
             ];
     }
