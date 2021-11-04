@@ -42,10 +42,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //1:m relationship with posts and user
     public function posts(){
         return $this -> hasMany(Post::class);
     }
 
+    //1:m relationship with comments and user
     public function comments(){
         return $this -> hasMany(Comment::class);
     }
