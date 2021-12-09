@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ab2417df9ed9aebff8e5aea69a80a584",
+    "content-hash": "fac5c9a7b8342cf24df444a74789ee54",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5897,16 +5897,16 @@
         },
         {
             "name": "laravel/breeze",
-            "version": "v1.4.2",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/breeze.git",
-                "reference": "221f1ffbaedc218a3c5513fe2eb95155605ab7b2"
+                "reference": "9abe49ebe4ff941660b7af1df318344f728d8f3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/breeze/zipball/221f1ffbaedc218a3c5513fe2eb95155605ab7b2",
-                "reference": "221f1ffbaedc218a3c5513fe2eb95155605ab7b2",
+                "url": "https://api.github.com/repos/laravel/breeze/zipball/9abe49ebe4ff941660b7af1df318344f728d8f3d",
+                "reference": "9abe49ebe4ff941660b7af1df318344f728d8f3d",
                 "shasum": ""
             },
             "require": {
@@ -5950,7 +5950,7 @@
                 "issues": "https://github.com/laravel/breeze/issues",
                 "source": "https://github.com/laravel/breeze"
             },
-            "time": "2021-09-28T14:27:54+00:00"
+            "time": "2021-12-07T15:45:42+00:00"
         },
         {
             "name": "laravel/sail",
