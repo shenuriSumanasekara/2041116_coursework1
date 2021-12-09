@@ -1,0 +1,89 @@
+
+@extends('layouts.app')
+
+ 
+
+@section('content')
+
+<div class ="container mt-3 card">
+    <div class="card-header font-family: cursive;">
+    Comment
+    </div>
+    <form method="post" action="{{ url('comments/{post_id}')}}">
+        @csrf
+        <div class="card-body">
+            <div class="form-group">
+                <textarea name="comment_body" id="comment_body" cols="100" rows="5" placeholder="Tell about your mischievous paw friend...."></textarea>
+            </div>       
+        </div>
+        <div class="card-footer text-right">
+            <button type="submit" class="btn btn-primary" style="width:100px">Comment</button>
+        </div>
+    </form>
+</div>
+<div class="container mt-3 card">
+ <div class="media border p-3">
+  <div class="row">
+    <div class="col-md-12">
+        <section class="comment-list">
+          <article class="row">
+            <div class="col-md-2 col-sm-2 hidden-xs">
+              <figure class="thumbnail">
+                <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+                <figcaption class="text-center">username</figcaption>
+              </figure>
+            </div>
+            <div class="col-md-10 col-sm-10">
+              <div class="panel panel-default arrow left">
+                <div class="panel-body">
+                  <header class="text-left">
+                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
+                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
+                  </header>
+                  <div class="comment-post">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                  </div>
+                  <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
+                </div>
+              </div>
+            </div>
+          </article>
+          <ul>
+            @foreach($comments as $comment)
+                <li>
+                    <article class="row">
+                        <div class="col-md-2 col-sm-2 col-md-offset-1 col-sm-offset-0 hidden-xs">
+                        <figure class="thumbnail">
+                            <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+                            <figcaption class="text-center">username</figcaption>
+                        </figure>
+                        </div>
+                        <div class="col-md-9 col-sm-9">
+                        <div class="panel panel-default arrow left">
+                            <div class="panel-heading right">Reply</div>
+                            <div class="panel-body">
+                            <header class="text-left">
+                                <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
+                                <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i>{{$comment->created_at}}</time>
+                            </header>
+                            <div class="comment-post">
+                                <p>
+                                {{$comment->comment_body}}
+                                </p>
+                            </div>
+                            <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
+                            </div>
+                        </div>
+                        </div>
+                    </article>
+                </li>
+            @endforeach
+        </ul>
+        </section>
+    </div>
+</div>
+</div>
+
+@endsection
