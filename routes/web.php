@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,11 @@ Route::post('/posts',[PostController::class,'store']);
 Route::get('/posts/index',[PostController::class,'index']);
 
 Route::post('/posts/post_id',[UserController::class,'userLogin']);
+
+Route::get('/comments/{post_id}',[CommentController::class,'index']);
+
+Route::post('/comments/{post_id}',[CommentController::class,'store']);
+
 
 
 Route::get('/dashboard', function () {

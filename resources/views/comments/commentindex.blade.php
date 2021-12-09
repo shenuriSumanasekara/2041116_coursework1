@@ -1,3 +1,13 @@
+<style>
+ .container{
+        width:700px !important;
+    }.row{
+        padding: 6px;
+    }
+
+</style>
+
+
 
 @extends('layouts.app')
 
@@ -26,6 +36,7 @@
   <div class="row">
     <div class="col-md-12">
         <section class="comment-list">
+          <!-- First Comment -->
           <article class="row">
             <div class="col-md-2 col-sm-2 hidden-xs">
               <figure class="thumbnail">
@@ -50,6 +61,7 @@
               </div>
             </div>
           </article>
+          <!-- Second Comment Reply -->
           <ul>
             @foreach($comments as $comment)
                 <li>

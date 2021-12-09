@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Comment;
 
 class CommentController extends Controller
 {
@@ -11,9 +12,10 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($post_id)
     {
-        //
+        $comments = Comment::get()->where('post_id',$post_id)->sortByDesc("created_at");;
+        return view('comments.commentindex',['comments' =>$comments]);
     }
 
     /**
@@ -34,7 +36,20 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $validatedData = $request->validate([
+            'comment_body' => 'required|max:1000',
+        ]);
+
+        $newComment = new Comment;
+        $newComment->comment_body = $validatedData['comment_body'];
+        $newComment->user_id=2 ;
+        $newComment->post_id=2 ;
+        $newComment->save();
+
+        session()->flash('messsage', 'Posted!');
+
+        return redirect('/comments'.$post_id);
     }
 
     /**
