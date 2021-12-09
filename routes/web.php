@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,16 @@ Route::get('/', function () {
 Route::get('/users/create', [UserController::class,'create']);
 
 Route::post('/users', [UserController::class,'store']);
+
+Route::post('/welcome',[UserController::class,'userLogin']);
+
+Route::get('/posts/create',[PostController::class,'create']);
+
+Route::post('/posts',[PostController::class,'store']);
+
+Route::get('/posts/index',[PostController::class,'index']);
+
+Route::post('/posts/post_id',[UserController::class,'userLogin']);
 
 
 Route::get('/dashboard', function () {

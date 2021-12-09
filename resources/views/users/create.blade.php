@@ -1,24 +1,4 @@
 <style>
-
-.register-photo {
-      background: #f1f7fc;
-      padding: 40px 0
-  }
-
-  .register-photo .image-holder {
-      display: table-cell;
-      width: auto;
-      background-size: cover
-  }
-
-  .register-photo .form-container {
-      display: table;
-      max-width: 900px;
-      width: 90%;
-      margin: 0 auto;
-      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1)
-  }
-
   .register-photo form {
       display: table-cell;
       width: 200px !important;
@@ -31,12 +11,6 @@
       .register-photo form {
           padding: 40px !important;
       }
-  }
-
-  .register-photo form h2 {
-      font-size: 24px;
-      line-height: 1.5 ;
-      margin-bottom: 20px 
   }
   .register-photo form h3 {
       font-size: 24px;
@@ -72,22 +46,6 @@
       outline: none !important
   }
 
-  .register-photo form .btn-primary:hover,
-  .register-photo form .btn-primary:active {
-      background: #1e81b0 !important
-  }
-
-  .register-photo form .btn-primary:active {
-      transform: translateY(1px)
-  }
-
-  .register-photo form .already {
-      display: block;
-      text-align: center;
-      font-size: 12px;
-      color: #6f7a85;
-      opacity: 0.9;
-      text-decoration: none
   }.btn-success{
       background-color: #1e81b0 !important;
       border: #1e81b0 !important;
@@ -95,13 +53,6 @@
       display: flex;
       width :250px !important;
       margin-left: 50px !important;
-
-  }
-  .imgh{
-      height:700px;
-      width: 350px;
-  }
- 
   }
 </style>
 @extends('layouts.app')

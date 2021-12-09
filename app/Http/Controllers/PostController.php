@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -13,7 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all()->sortByDesc("created_at");
+        return view('posts.index',['posts' =>$posts]);
     }
 
     /**
@@ -34,7 +36,35 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'post_body' => 'required|max:500',
+        ]);
+
+        $newPost = new Post;
+        $newPost->post_body = $validatedData['post_body'];
+        $newPost->view_count=0;
+        $newPost->like_count=0;
+        $newPost->comment_count=0;
+        $newPost->user_id=2 ;
+        $newPost->save();
+
+        session()->flash('messsage', 'Posted!');
+
+        return redirect()->to('/posts/index');
+    }
+
+    public function like(Request $request, $id)
+    {
+        $action = $request->get('action');
+        switch ($action) {
+            case 'Like':
+                Post::where('id', $id)->increment('like_count');
+                break;
+            case 'Unlike':
+                Post::where('id', $id)->decrement('like_count');
+                break;
+        }
+        return '';
     }
 
     /**
