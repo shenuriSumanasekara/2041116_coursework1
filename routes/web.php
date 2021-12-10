@@ -33,6 +33,12 @@ Route::post('/posts',[PostController::class,'store']);
 
 Route::get('/posts/index',[PostController::class,'index']);
 
+Route::get('/delete/{post_id}',[PostController::class,'delete']);
+
+Route::get('/update/{post_id}',[PostController::class,'show']);
+
+Route::post('/update',[PostController::class,'update']);
+
 Route::post('/posts/post_id',[UserController::class,'userLogin']);
 
 Route::get('/comments/{post_id}',[CommentController::class,'index']);

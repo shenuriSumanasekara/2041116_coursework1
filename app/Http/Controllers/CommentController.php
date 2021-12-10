@@ -49,7 +49,7 @@ class CommentController extends Controller
 
         session()->flash('messsage', 'Posted!');
 
-        return redirect('/comments'.$post_id);
+        return redirect('/comments/{post_id}');
     }
 
     /**

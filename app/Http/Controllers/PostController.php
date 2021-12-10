@@ -75,7 +75,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view('posts.update',['data'=>$post]);
     }
 
     /**
@@ -96,9 +97,27 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        
+        $validatedData = $request->validate([
+            'post_body' => 'required|max:500',
+        ]);
+
+        $post = Post::find($request->id);
+        $post->post_body = $validatedData['post_body'];
+        $post->save();
+        return redirect('/posts/index');
+        
+    }
+
+
+    public function delete($id)
+    {
+        $post = Post::find($id);
+        $post->delete();
+        return redirect('/posts/index');
+        
     }
 
     /**
