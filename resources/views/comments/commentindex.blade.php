@@ -18,7 +18,6 @@
  
 
 @section('content')
-
 <div class ="container mt-3 card">
     <div class="card-header font-family: cursive;">
     Comment
@@ -27,6 +26,12 @@
         @csrf
         <div class="card-body">
             <div class="form-group">
+                <div>
+                <input type="hidden" name="user_id" value="{{$user->id}}"> 
+                </div>
+                <div>
+                <input type="hidden" name="post_id" value="{{$post->id}}"> 
+                </div>
                 <textarea name="comment_body" id="comment_body" cols="100" rows="5" placeholder="Tell about your mischievous paw friend...."></textarea>
             </div>       
         </div>
@@ -45,7 +50,7 @@
             <div class="col-md-2 col-sm-2 hidden-xs">
               <figure class="thumbnail">
                 <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
-                <figcaption class="text-center">username</figcaption>
+                <figcaption class="text-center">{{$user->first_name}}</figcaption>
               </figure>
             </div>
             <div class="col-md-10 col-sm-10">
@@ -53,11 +58,11 @@
                 <div class="panel-body">
                   <header class="text-left">
                     <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
-                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
+                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> {{$post->created_at}}</time>
                   </header>
                   <div class="comment-post">
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                     {{$post->post_body}}
                     </p>
                   </div>
                 </div>
@@ -72,7 +77,7 @@
                         <div class="col-md-2 col-sm-2 col-md-offset-1 col-sm-offset-0 hidden-xs">
                         <figure class="thumbnail">
                             <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
-                            <figcaption class="text-center">username</figcaption>
+                            <figcaption class="text-center">{{$user->first_name}}</figcaption>
                         </figure>
                         </div>
                         <div class="col-md-9 col-sm-9">
@@ -80,8 +85,8 @@
                             <div class="panel-heading right">Reply</div>
                             <div class="panel-body">
                             <header class="text-left">
-                                <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
-                                <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i>{{$comment->created_at}}</time>
+                                <div class="comment-user"><i class="fa fa-user"></i> {{$user->first_name}}</div>
+                                <time class="comment-date" ><i class="fa fa-clock-o"></i>2016-76-98</time>
                             </header>
                             <div class="comment-post">
                                 <p>

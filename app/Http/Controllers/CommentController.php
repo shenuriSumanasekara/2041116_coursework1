@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Models\Post;
+use App\Models\User;
 
 class CommentController extends Controller
 {
@@ -14,8 +16,14 @@ class CommentController extends Controller
      */
     public function index($post_id)
     {
-        $comments = Comment::get()->where('post_id',$post_id)->sortByDesc("created_at");;
-        return view('comments.commentindex',['comments' =>$comments]);
+        $comments = Comment::get()->where('post_id',$post_id)->sortByDesc("created_at");
+        $post = Post::where('id', '=',$post_id)->first();
+        $find_post = Post::find($post_id);
+        error_log($find_post);
+        $user = User::where('id','=', $find_post->user_id)->first();
+       error_log($user);
+        return view('comments.commentindex')->with(array('comments'=>$comments,'user'=>$user, 'post'=>$post));
+        
     }
 
     /**
@@ -43,13 +51,14 @@ class CommentController extends Controller
 
         $newComment = new Comment;
         $newComment->comment_body = $validatedData['comment_body'];
-        $newComment->user_id=2 ;
-        $newComment->post_id=2 ;
+        $newComment->user_id=$request->user_id ;
+        $newComment->post_id=$request->post_id ;
         $newComment->save();
+        //return post_id;
+        //session()->flash('messsage', 'Posted!');
 
-        session()->flash('messsage', 'Posted!');
-
-        return redirect('/comments/{post_id}');
+        return redirect('/posts/index/getUserDetails');
+       
     }
 
     /**
