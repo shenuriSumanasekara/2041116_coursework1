@@ -63,6 +63,12 @@
 
       <div class="image-holder" style="background-image: url(/img/dog6.jpeg)"></div>
       <form method="post" action="{{ url('users')}}">
+          @if(Session::has('success'))
+          <div class="alert alert-success">{{Session::get('success')}}
+          @endif
+          @if(Session::has('fail'))
+          <div class="alert alert-danger">{{Session::get('fail')}}
+          @endif
           @csrf
           <h3 class="text-center"><strong>Create</strong> an account</h3>
           <div class="form-group"><input class="form-control" type="text" name="first_name" placeholder="First Name" value="{{old('first_name')}}">

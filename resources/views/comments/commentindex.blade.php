@@ -3,6 +3,10 @@
         width:700px !important;
     }.row{
         padding: 6px;
+    }.btnv{
+        display: inline-block;
+        background-color: white !important;
+        
     }
 
 </style>
@@ -56,7 +60,6 @@
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     </p>
                   </div>
-                  <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
                 </div>
               </div>
             </div>
@@ -85,7 +88,8 @@
                                 {{$comment->comment_body}}
                                 </p>
                             </div>
-                            <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
+                            <a class="btnv" href="/update/comment/{{$comment->id}}" ><i class="fa fas fa-edit fa-2x " aria-hidden="true" style="margin-left: 100px;color:#1A64BE"></i></a>
+                            <a class="btnv" href="/delete/comment/{{$comment->id}}"><i class="fa fas fa-trash fa-2x " aria-hidden="true" style="color:#1A64BE"></i></a>
                             </div>
                         </div>
                         </div>

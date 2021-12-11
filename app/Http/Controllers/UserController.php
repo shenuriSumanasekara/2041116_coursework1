@@ -60,7 +60,7 @@ class UserController extends Controller
         $newUser->save();
 
         if($newUser){
-            return redirect()->to('/posts/index');
+            return redirect('/posts/index/getUserDetails')->with('success', 'Welcome New Paw Friend!');
             Session::flash('messsage', 'Welcome New Paw Friend!');
         }else{
             return back()->with('fail','Something Wrong!');
@@ -83,8 +83,8 @@ class UserController extends Controller
         $user = User::where('email','=',$request->email)->first();
         if($user){
             if(Hash::check($request->password,$user->password)){
-                $request->session()->put('loginId',$user->id);
-                return redirect()->to('/posts/index');
+                $request->session()->put('user_id',$user->id);
+                return redirect('/posts/index/getUserDetails')->with('success', 'Welcome Back Paw Friend!');
             }else{
                 return back()->with('fail', 'Your Username or Password is Incorrect!');
             }
@@ -95,7 +95,13 @@ class UserController extends Controller
         //dd($request['email']);
     
     }
-
+    public function getUserDetails(){
+        $user= array();
+        if(Session::has('user_id')){
+            $user = User::where('id','=',Session::get('user_id'))->first();
+        }
+        return redirect('/posts/index')->with(['user'=>$user]);
+    }
     
     /**
      * Display the specified resource.

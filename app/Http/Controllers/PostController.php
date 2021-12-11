@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -16,6 +17,7 @@ class PostController extends Controller
     {
         $posts = Post::all()->sortByDesc("created_at");
         return view('posts.index',['posts' =>$posts]);
+
     }
 
     /**
@@ -36,6 +38,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        
         $validatedData = $request->validate([
             'post_body' => 'required|max:500',
         ]);
@@ -45,12 +48,15 @@ class PostController extends Controller
         $newPost->view_count=0;
         $newPost->like_count=0;
         $newPost->comment_count=0;
-        $newPost->user_id=2 ;
+        $newPost->user_id=$request->user_id;
         $newPost->save();
 
-        session()->flash('messsage', 'Posted!');
-
-        return redirect()->to('/posts/index');
+        if($newPost){
+            return redirect('/posts/index/getUserDetails');
+        }else{
+            return back()->with('fail','Something Wrong!');
+        }
+        
     }
 
     public function like(Request $request, $id)
@@ -107,7 +113,7 @@ class PostController extends Controller
         $post = Post::find($request->id);
         $post->post_body = $validatedData['post_body'];
         $post->save();
-        return redirect('/posts/index');
+        return redirect('/posts/index/getUserDetails');
         
     }
 
@@ -116,7 +122,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        return redirect('/posts/index');
+        return redirect('/posts/index/getUserDetails');
         
     }
 

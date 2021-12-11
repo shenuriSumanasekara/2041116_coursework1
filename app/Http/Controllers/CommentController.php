@@ -60,7 +60,8 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        //
+        $comment = Comment::find($id);
+        return view('comments.update',['data'=>$comment]);
     }
 
     /**
@@ -81,9 +82,26 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'comment_body' => 'required|max:500',
+        ]);
+
+        $comment = Comment::find($request->id);
+        $comment->comment_body = $validatedData['comment_body'];
+        $comment->save();
+        return redirect('/posts/index/getUserDetails');
+        
+    }
+
+
+    public function delete($id)
+    {
+        $comment = Comment::find($id);
+        $comment->delete();
+        return redirect('/posts/index/getUserDetails');
+        
     }
 
     /**

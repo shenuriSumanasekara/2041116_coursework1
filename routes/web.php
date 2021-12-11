@@ -33,6 +33,8 @@ Route::post('/posts',[PostController::class,'store']);
 
 Route::get('/posts/index',[PostController::class,'index']);
 
+Route::get('/posts/index/getUserDetails',[UserController::class,'getUserDetails']);
+
 Route::get('/delete/{post_id}',[PostController::class,'delete']);
 
 Route::get('/update/{post_id}',[PostController::class,'show']);
@@ -44,6 +46,19 @@ Route::post('/posts/post_id',[UserController::class,'userLogin']);
 Route::get('/comments/{post_id}',[CommentController::class,'index']);
 
 Route::post('/comments/{post_id}',[CommentController::class,'store']);
+
+Route::get('/delete/comment/{comment_id}',[CommentController::class,'delete']);
+
+Route::get('/update/comment/{comment_id}',[CommentController::class,'show']);
+
+Route::post('/update/comment',[CommentController::class,'update']);
+
+Route::get('/logout', function () {
+    if(Session()->has('user')){
+        session()->pull('user');
+    }
+    return redirect('/');
+});
 
 
 

@@ -10,14 +10,14 @@
     <div class="card-header font-family: cursive;">
     Edit
     </div>
-    <form method="post" action="{{ url('update')}}">
+    <form method="post" action="{{ url('/update/comment')}}">
     @csrf
         <div>
             <input type="hidden" name="id" value="{{$data->id}}"> 
         </div>   
         <div class="card-body">
             <div class="form-group">
-                <input class="form-control" type="text" name="post_body" id="post_body"  value="{{($data->post_body)}}">
+                <input class="form-control" type="text" name="comment_body" id="comment_body"  value="{{($data->comment_body)}}">
             </div>       
         </div>
         <div class="card-footer text-right">

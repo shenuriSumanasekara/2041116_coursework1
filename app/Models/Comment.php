@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
+    public $timestamps=false;
 
     //1:m relationship with users and comments
     public function user(){

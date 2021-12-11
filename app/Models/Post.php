@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    public $timestamps=false;
 
     //1:m relationship with user and post
     public function user(){

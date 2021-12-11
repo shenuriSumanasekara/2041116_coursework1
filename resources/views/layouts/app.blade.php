@@ -21,8 +21,12 @@
         <div>
             <ul> 
                 <li  style="float:left; font-family:cursive; font-weight:bold; color:#44689e"><a href="#home"><i class="fa fa-fw fa-paw"></i>Puppy Media</a></li>
+                @if(Session()->has('user'))
+                <li><a class="active" href="{{ url('/logout')}}"><i class="fa fa-fw fa-lock"></i>Logout</a></li>
+                @else
                 <li><a class="active" href="{{ url('/')}}"><i class="fa fa-fw fa-lock"></i>Login</a></li>
-                <li><a href="#contact"><i class="fa fa-fw fa-user"></i>My Profile</a></li>
+                @endif
+                <li><a href="#"><i class="fa fa-fw fa-user"></i>My Profile</a></li>
                 <li><a href="#about"><i class="fa fa-fw fa-search"></i>About</a></li>
                 <li><a href="#home"><i class="fa fa-fw fa-home"></i>Home</a></li>
             </ul>

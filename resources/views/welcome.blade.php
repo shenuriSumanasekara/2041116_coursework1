@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+    <style>
+        .btn{
+        text-align:center !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+    </style>
+        
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,7 +30,12 @@
             <li><a href="#about"><i class="fa fa-fw fa-search"></i>About</a></li>
             <li><a  href="#home"><i class="fa fa-fw fa-home"></i>Home</a></li>
         </ul>
-
+        @if(Session::has('success'))
+                    <div class="alert alert-success">{{Session::get('success')}}
+                    @endif
+                    @if(Session::has('fail'))
+                    <div class="alert alert-danger">{{Session::get('fail')}}
+                    @endif
         <div class="register-photo">
             <div style="font-size:54px; padding: 4px 66px;">
             <i class="fa fa-fw fa-paw fa-lg " style="color:#1A64BE; "><h2 style="color:#1A64BE">Puppy Media</h2></i>
@@ -37,7 +51,7 @@
                     <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password">
                     <span class="text-danger"> @error('password') {{$message}} @enderror</span>
                     </div>
-                    <div class="form-group"><button class="btn btn-success btn-block" type="submit">Sign Up</button></div><a class="already" href="{{ url('users/create')}}">Don't have an account? Sign Up here.</a>
+                    <div class="form-group"><button class="btn btn-success btn-block" type="submit" style="text-align=center">Login</button></div><a class="already" href="{{ url('users/create')}}">Don't have an account? Sign Up here.</a>
                 </form>
             </div>
         </div>				                            
