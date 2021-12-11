@@ -53,6 +53,11 @@ Route::get('/update/comment/{comment_id}',[CommentController::class,'show']);
 
 Route::post('/update/comment',[CommentController::class,'update']);
 
+Route::get('/users/profile/{user_id}', [UserController::class,'profile']);
+
+Route::post('/users/profile/{user_id}', [UserController::class,'profileUpdate']);
+
+
 Route::get('/logout', function () {
     if(Session()->has('user')){
         session()->pull('user');

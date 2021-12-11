@@ -38,7 +38,12 @@
         display: inline-block;
         background-color: white !important;
         
-    }
+    }h3 {
+        text-align: center;
+        font-family: cursive !important;
+        font-weight: bold !important;
+        font-size: 20 !important;
+        }
 </style>
 
 @extends('layouts.app')
@@ -47,7 +52,22 @@
 
 @section('content')
 <?php $user = Session::get('user'); ?>
-<div class ="container mt-3 card">
+<div class="register-photo">
+    <div row>
+    <div class="col-md-10 col-md-offset-1">
+            <a href="/users/profile/{{$user->id}}"><img src="/prof/{{$user->user_image}}" style=" btn width:150px; height:150px; float:left; border-radius:50%; margin-right:25px; padding: 4px"></a>
+            <div>
+            <h2 style="color:#1A64BE">{{$user->first_name}}</h2><h3 style="color:#1A64BE">{{$user->last_name}}</h3>
+    </div>
+    </div>
+        <div style="font-size:24px; padding: 4px 46px;">
+            <i class="fa fa-fw fa-paw fa-lg " style="color:#1A64BE; ">
+            <h3 style="color:#1A64BE">Puppy Media</h3></i>
+        </div>
+    
+    </div>
+</div>
+<div class ="container mt-8 card">
 @if(Session::has('success'))
     <div class="alert alert-success">{{Session::get('success')}}
     </div>

@@ -23,6 +23,7 @@ class UserTableSeeder extends Seeder
         $a->password="mark";
         $a->phone_number="0903454567";
         $a->dob="1990-05-03";
+        $a->user_image="/prof/default.jpeg";
         $a->remember_token= "42YyduhjVm";
         $a->save();
 

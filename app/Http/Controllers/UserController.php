@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Hash;
 use Session;
+use Image;
 
 class UserController extends Controller
 {
@@ -27,6 +28,12 @@ class UserController extends Controller
     public function create()
     {
         return view('users.create');
+    }
+
+    public function profile($id)
+    {
+        $user = User::where('id','=',$id)->first();
+        return View('users.profile')->with('user',$user);
     }
 
     /**
@@ -60,6 +67,7 @@ class UserController extends Controller
         $newUser->save();
 
         if($newUser){
+            $request->session()->put('user_id',$newUser->id);
             return redirect('/posts/index/getUserDetails')->with('success', 'Welcome New Paw Friend!');
             Session::flash('messsage', 'Welcome New Paw Friend!');
         }else{
@@ -102,6 +110,27 @@ class UserController extends Controller
         }
         return redirect('/posts/index')->with(['user'=>$user]);
     }
+
+
+    public function profileUpdate(Request $request)
+    {
+        
+        if($request->hasFile('user_image')){
+    		$user_image = $request->file('user_image');
+    		$filename = time() . '.' . $user_image->getClientOriginalExtension();
+    		Image::make($user_image)->resize(300, 300)->save( public_path('prof/' . $filename ) );
+
+
+            $user = User::find($request->id);
+            $user->user_image = $filename;
+            $user->save();
+            return redirect('/posts/index/getUserDetails');
+    		
+    	}
+
+
+    }
+
     
     /**
      * Display the specified resource.
