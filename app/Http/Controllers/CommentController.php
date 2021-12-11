@@ -16,13 +16,13 @@ class CommentController extends Controller
      */
     public function index($post_id)
     {
+
         $comments = Comment::get()->where('post_id',$post_id)->sortByDesc("created_at");
         $post = Post::where('id', '=',$post_id)->first();
         $find_post = Post::find($post_id);
-        error_log($find_post);
         $user = User::where('id','=', $find_post->user_id)->first();
-       error_log($user);
         return view('comments.commentindex')->with(array('comments'=>$comments,'user'=>$user, 'post'=>$post));
+        
         
     }
 

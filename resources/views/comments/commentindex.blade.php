@@ -18,6 +18,7 @@
  
 
 @section('content')
+<?php $user1 = Session::get('user'); ?>
 <div class ="container mt-3 card">
     <div class="card-header font-family: cursive;">
     Comment

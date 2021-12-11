@@ -18,6 +18,9 @@ class PostController extends Controller
         $posts = Post::all()->sortByDesc("created_at");
         return view('posts.index',['posts' =>$posts]);
 
+        //$posts = Post::orderBy("created_at")->paginate(5);
+        //return view('posts.index')->with('posts' , $posts);
+
     }
 
     /**
@@ -83,8 +86,6 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         return view('posts.update',['data'=>$post]);
-
-        
     }
 
     /**

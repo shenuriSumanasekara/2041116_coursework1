@@ -106,7 +106,9 @@
                     </article> 
                 </li>
             @endforeach
-        </ul>
+        </ul> 
     </div>
     </div>
+  
     @endsection
+       
