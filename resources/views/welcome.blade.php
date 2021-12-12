@@ -30,12 +30,14 @@
             <li><a href="#about"><i class="fa fa-fw fa-search"></i>About</a></li>
             <li><a  href="#home"><i class="fa fa-fw fa-home"></i>Home</a></li>
         </ul>
+        <div class ="container mt-8 card" style="margin-top:10px" >
         @if(Session::has('success'))
                     <div class="alert alert-success">{{Session::get('success')}}
                     @endif
                     @if(Session::has('fail'))
                     <div class="alert alert-danger">{{Session::get('fail')}}
                     @endif
+        </div>  
         <div class="register-photo">
             <div style="font-size:54px; padding: 4px 66px;">
             <i class="fa fa-fw fa-paw fa-lg " style="color:#1A64BE; "><h2 style="color:#1A64BE">Puppy Media</h2></i>

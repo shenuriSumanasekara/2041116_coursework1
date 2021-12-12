@@ -55,7 +55,7 @@
 <div class="register-photo">
     <div row>
     <div class="col-md-10 col-md-offset-1">
-            <a href="/users/profile/{{$user->id}}"><img src="/prof/{{$user->user_image}}" style=" btn width:200px; height:200px; float:left; border-radius:50%; margin-right:25px; padding: 4px"></a>
+            <a href="/users/profile/{{$user->id}}"><img src="/prof/{{$user->user_image}}" style=" btn width:200px; height:200px; float:left; border-radius:50%; border:3px solid black; margin-right:25px; padding: 4px"></a>
             <div>
             <h2 style="color:#1A64BE">{{$user->first_name}}</h2><h3 style="color:#1A64BE">{{$user->last_name}}</h3>
     </div>

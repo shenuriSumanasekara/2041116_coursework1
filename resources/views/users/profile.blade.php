@@ -1,3 +1,11 @@
+<style>
+        .btn{
+        width:110px !important;
+        height:40px !important;
+        }
+    </style>
+        
+
 @extends('layouts.app')
 
 
