@@ -43,7 +43,7 @@ Route::post('/update',[PostController::class,'update']);
 
 Route::post('/posts/post_id',[UserController::class,'userLogin']);
 
-Route::get('/comments/{post_id}',[CommentController::class,'index']);
+Route::get('/comments/{post_id}/{user_id}',[CommentController::class,'index']);
 
 Route::post('/comments/{post_id}',[CommentController::class,'store']);
 
@@ -57,6 +57,7 @@ Route::get('/users/profile/{user_id}', [UserController::class,'profile']);
 
 Route::post('/users/profile/{user_id}', [UserController::class,'profileUpdate']);
 
+//Route::get('/post/like/{x}',[PostController::class,'like']);
 
 Route::get('/logout', function () {
     if(Session()->has('user')){

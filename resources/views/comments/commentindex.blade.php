@@ -18,7 +18,7 @@
  
 
 @section('content')
-<?php $user1 = Session::get('user'); ?>
+<?php $userr = Session::getId(); ?>
 <div class ="container mt-3 card">
     <div class="card-header font-family: cursive;">
     Comment
@@ -50,15 +50,15 @@
           <article class="row">
             <div class="col-md-2 col-sm-2 hidden-xs">
               <figure class="thumbnail">
-                <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
-                <figcaption class="text-center">{{$user->first_name}}</figcaption>
+                <img class="img-responsive" src=" /prof/{{$post ->user->user_image}}" />
+                <figcaption class="text-center">{{$post->user->first_name}}</figcaption>
               </figure>
             </div>
             <div class="col-md-10 col-sm-10">
               <div class="panel panel-default arrow left">
                 <div class="panel-body">
                   <header class="text-left">
-                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
+                    <div class="comment-user"><i class="fa fa-user"></i> {{$post->user->username}}</div>
                     <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> {{$post->created_at}}</time>
                   </header>
                   <div class="comment-post">
@@ -72,22 +72,21 @@
           </article>
           <!-- Second Comment Reply -->
           <ul>
-            @foreach($comments as $comment)
+            @foreach($post->comments as $comment)
                 <li>
                     <article class="row">
                         <div class="col-md-2 col-sm-2 col-md-offset-1 col-sm-offset-0 hidden-xs">
                         <figure class="thumbnail">
-                            <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
-                            <figcaption class="text-center">{{$user->first_name}}</figcaption>
+                            <img class="img-responsive" src=" /prof/{{$comment->user->user_image}}" />
+                            <figcaption class="text-center">{{$comment->user->first_name}}</figcaption>
                         </figure>
                         </div>
                         <div class="col-md-9 col-sm-9">
                         <div class="panel panel-default arrow left">
-                            <div class="panel-heading right">Reply</div>
                             <div class="panel-body">
                             <header class="text-left">
-                                <div class="comment-user"><i class="fa fa-user"></i> {{$user->first_name}}</div>
-                                <time class="comment-date" ><i class="fa fa-clock-o"></i>2016-76-98</time>
+                                <div class="comment-user"><i class="fa fa-user"></i> {{$comment->user->first_name}}</div>
+                                <time class="comment-date" ><i class="fa fa-clock-o"></i>{{$comment->created_at}}</time>
                             </header>
                             <div class="comment-post">
                                 <p>

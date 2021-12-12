@@ -55,7 +55,7 @@
 <div class="register-photo">
     <div row>
     <div class="col-md-10 col-md-offset-1">
-            <a href="/users/profile/{{$user->id}}"><img src="/prof/{{$user->user_image}}" style=" btn width:150px; height:150px; float:left; border-radius:50%; margin-right:25px; padding: 4px"></a>
+            <a href="/users/profile/{{$user->id}}"><img src="/prof/{{$user->user_image}}" style=" btn width:200px; height:200px; float:left; border-radius:50%; margin-right:25px; padding: 4px"></a>
             <div>
             <h2 style="color:#1A64BE">{{$user->first_name}}</h2><h3 style="color:#1A64BE">{{$user->last_name}}</h3>
     </div>
@@ -100,23 +100,24 @@
                     <article class="row">
                         <div class="col-md-2 col-sm-2 hidden-xs">
                             <figure class="thumbnail">
-                            <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
-                            <figcaption class="text-center">Username</figcaption>
+                            <img class="img-responsive" src=" /prof/{{$post->user->user_image}}" />
+                            <figcaption class="text-center">{{$post->user -> first_name}}</figcaption>
                             </figure>
                         </div>
                         <div class="col-md-10 col-sm-10">
                             <div class="panel panel-default arrow left">
                                 <div class="panel-body">
                                     <header class="text-left">
-                                        <div class="comment-user"><i class="fa fa-user"></i> Username</div>
+                                        <div class="comment-user"><i class="fa fa-user"></i> {{$post->user -> username}}</div>
                                         <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> {{$post->created_at}}</time>
                                     </header>
                                     <div class="comment-post">
                                         <h3 style="color:#1A64BE">{{$post->post_body}}</h3>
                                     </div>
                                         <div> 
-                                        <a class="btn btn-default btn-sm" style="border: #8B5FEA;  font-size : 11px;  color:#8B5FEA " href="/comments/{{$post->id}}"><i class="fa fa-comments-o fa-2x" aria-hidden="true" style="color:#8B5FEA "></i>   Comments     {{$post->comment_count}}</a>
-                                        <a class="btn" href=# style="border: #1A64BE; color:#1A64BE font-size : 11px;" ><i class="fa fa-heart fa-2x " aria-hidden="true" style="color:#1A64BE"></i> Like    {{$post->like_count}}</a>
+                                        <a class="btn btn-default btn-sm" style="border: #8B5FEA;  font-size : 11px;  color:#8B5FEA " href="/comments/{{$post->id}}/{{$user->id}}"><i class="fa fa-comments-o fa-2x" aria-hidden="true" style="color:#8B5FEA "></i>   Comments     {{$post->comment_count}}</a>
+                                        
+                                        <a class="btn" href="#" style="border: #1A64BE; color:#1A64BE font-size : 11px;" ><i class="fa fa-heart fa-2x " aria-hidden="true" style="color:#1A64BE"></i> Like    {{$post->like_count}}</a>
                                         <a class="btnv" href="/update/{{$post->id}}" ><i class="fa fas fa-edit fa-2x " aria-hidden="true" style="margin-left: 80px;  color:#1A64BE"></i></a>
                                         <a class="btnv" href="/delete/{{$post->id}}"><i class="fa fas fa-trash fa-2x " aria-hidden="true" style="color:#1A64BE"></i></a>
                                         </div>

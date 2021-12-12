@@ -16,13 +16,25 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all()->sortByDesc("created_at");
-        return view('posts.index',['posts' =>$posts]);
+        
+        foreach ($posts as $post){
+            $otheruser = User::where('id','=', $post->user_id)->first();
+            return view('posts.index',['posts' =>$posts],['otheruser' => $otheruser]);
+            //return $otheruser;
+        }
+        
 
         //$posts = Post::orderBy("created_at")->paginate(5);
         //return view('posts.index')->with('posts' , $posts);
 
     }
+    /*
+    public function like(Request x){
 
+        x.classList.toggle("fa fa-heart fa-2x ");
+
+    }
+*/
     /**
      * Show the form for creating a new resource.
      *
@@ -62,7 +74,7 @@ class PostController extends Controller
         
     }
 
-    public function like(Request $request, $id)
+    public function like3(Request $request, $id)
     {
         $action = $request->get('action');
         switch ($action) {

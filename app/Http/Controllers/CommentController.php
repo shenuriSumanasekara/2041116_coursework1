@@ -14,14 +14,29 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($post_id)
+    public function index($post_id,$user_id)
     {
 
         $comments = Comment::get()->where('post_id',$post_id)->sortByDesc("created_at");
-        $post = Post::where('id', '=',$post_id)->first();
-        $find_post = Post::find($post_id);
-        $user = User::where('id','=', $find_post->user_id)->first();
+
+        $post = Post::with('comments.user')->where('id', $post_id)->first();
+
+        //$post = Post::where('id', '=',$post_id)->first();
+        //$find_post = Post::find($post_id);
+        $user = User::where('id','=', $user_id)->first();
+        /*
+        if($comments){
+            foreach($comments as $comment){
+                $user = User::where('id','=', $comment->user_id)->first();
+                //return $commenter;
+                return view('comments.commentindex')->with(array('comments'=>$comments,'user'=>$user, 'post'=>$post));
+            }
+        }
+        */
         return view('comments.commentindex')->with(array('comments'=>$comments,'user'=>$user, 'post'=>$post));
+        //$find_post = Post::find($post_id);
+        //$user = User::where('id','=', $find_post->user_id)->first();
+        //return view('comments.commentindex')->with(array('comments'=>$comments,'user'=>$user, 'post'=>$post));
         
         
     }
