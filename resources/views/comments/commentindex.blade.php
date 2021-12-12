@@ -46,7 +46,7 @@
   <div class="row">
     <div class="col-md-12">
         <section class="comment-list">
-          <!-- First Comment -->
+          <!-- Post -->
           <article class="row">
             <div class="col-md-2 col-sm-2 hidden-xs">
               <figure class="thumbnail">
@@ -84,17 +84,17 @@
                         <div class="col-md-9 col-sm-9">
                         <div class="panel panel-default arrow left">
                             <div class="panel-body">
-                            <header class="text-left">
-                                <div class="comment-user"><i class="fa fa-user"></i> {{$comment->user->first_name}}</div>
-                                <time class="comment-date" ><i class="fa fa-clock-o"></i>{{$comment->created_at}}</time>
-                            </header>
-                            <div class="comment-post">
-                                <p>
-                                {{$comment->comment_body}}
-                                </p>
-                            </div>
-                            <a class="btnv" href="/update/comment/{{$comment->id}}" ><i class="fa fas fa-edit fa-2x " aria-hidden="true" style="margin-left: 100px;color:#1A64BE"></i></a>
-                            <a class="btnv" href="/delete/comment/{{$comment->id}}"><i class="fa fas fa-trash fa-2x " aria-hidden="true" style="color:#1A64BE"></i></a>
+                              <header class="text-left">
+                                  <div class="comment-user"><i class="fa fa-user"></i> {{$comment->user->first_name}}</div>
+                                  <time class="comment-date" ><i class="fa fa-clock-o"></i>{{$comment->created_at}}</time>
+                              </header>
+                              <div class="comment-post">
+                                  <p>
+                                  {{$comment->comment_body}}
+                                  </p>
+                              </div>
+                              <a class="btnv" href="/update/comment/{{$comment->id}}" ><i class="fa fas fa-edit fa-2x " aria-hidden="true" style="margin-left: 100px;color:#1A64BE"></i></a>
+                              <a class="btnv" href="/delete/comment/{{$comment->id}}"><i class="fa fas fa-trash fa-2x " aria-hidden="true" style="color:#1A64BE"></i></a>
                             </div>
                         </div>
                         </div>
@@ -102,8 +102,9 @@
                 </li>
             @endforeach
         </ul>
-        </section>
+      </section>
     </div>
+  </div>  
 </div>
 </div>
 

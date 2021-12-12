@@ -57,7 +57,7 @@ Route::get('/users/profile/{user_id}', [UserController::class,'profile']);
 
 Route::post('/users/profile/{user_id}', [UserController::class,'profileUpdate']);
 
-//Route::get('/post/like/{x}',[PostController::class,'like']);
+Route::get('/post/like/{post_id}',[PostController::class,'like']);
 
 Route::get('/logout', function () {
     if(Session()->has('user')){

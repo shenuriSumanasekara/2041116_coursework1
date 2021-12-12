@@ -74,19 +74,7 @@ class PostController extends Controller
         
     }
 
-    public function like3(Request $request, $id)
-    {
-        $action = $request->get('action');
-        switch ($action) {
-            case 'Like':
-                Post::where('id', $id)->increment('like_count');
-                break;
-            case 'Unlike':
-                Post::where('id', $id)->decrement('like_count');
-                break;
-        }
-        return '';
-    }
+    
 
     /**
      * Display the specified resource.
@@ -130,6 +118,24 @@ class PostController extends Controller
         $post->save();
         return redirect('/posts/index/getUserDetails');
         
+    }
+
+    public function like(Request $request, $post_id)
+    {
+        Post::find($post_id)->increment('like_count');
+        return redirect('/posts/index/getUserDetails');
+        /*
+        $action = $request->get('action');
+        switch ($action) {
+            case 'Like':
+                Post::where('id', $id)->increment('like_count');
+                break;
+            case 'Unlike':
+                Post::where('id', $id)->decrement('like_count');
+                break;
+        }
+        return '';
+    */
     }
 
 

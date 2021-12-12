@@ -117,7 +117,7 @@
                                         <div> 
                                         <a class="btn btn-default btn-sm" style="border: #8B5FEA;  font-size : 11px;  color:#8B5FEA " href="/comments/{{$post->id}}/{{$user->id}}"><i class="fa fa-comments-o fa-2x" aria-hidden="true" style="color:#8B5FEA "></i>   Comments     {{$post->comment_count}}</a>
                                         
-                                        <a class="btn" href="#" style="border: #1A64BE; color:#1A64BE font-size : 11px;" ><i class="fa fa-heart fa-2x " aria-hidden="true" style="color:#1A64BE"></i> Like    {{$post->like_count}}</a>
+                                        <a class="btn" href="/post/like/{{$post->id}}" style="border: #1A64BE; color:#1A64BE font-size : 11px;" ><i class="fa fa-heart fa-2x " aria-hidden="true" style="color:#1A64BE"></i> Like    {{$post->like_count}}</a>
                                         <a class="btnv" href="/update/{{$post->id}}" ><i class="fa fas fa-edit fa-2x " aria-hidden="true" style="margin-left: 80px;  color:#1A64BE"></i></a>
                                         <a class="btnv" href="/delete/{{$post->id}}"><i class="fa fas fa-trash fa-2x " aria-hidden="true" style="color:#1A64BE"></i></a>
                                         </div>
