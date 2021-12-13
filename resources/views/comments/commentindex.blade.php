@@ -24,7 +24,13 @@
     Comment
     </div>
     <form method="post" action="{{ url('comments/{post_id}')}}">
-        @csrf
+    @if(Session::has('success'))
+      <div class="alert alert-success">{{Session::get('success')}}</div>
+    @endif
+    @if(Session::has('fail'))
+      <div class="alert alert-danger">{{Session::get('fail')}}</div>
+    @endif
+    @csrf
         <div class="card-body">
             <div class="form-group">
                 <div>
@@ -33,7 +39,9 @@
                 <div>
                 <input type="hidden" name="post_id" value="{{$post->id}}"> 
                 </div>
-                <textarea name="comment_body" id="comment_body" cols="100" rows="5" placeholder="Tell about your mischievous paw friend...."></textarea>
+                <div class="form-group"><textarea class="form-control" name="comment_body" id="comment_body" cols="100" rows="5" placeholder="Tell about your mischievous paw friend...."></textarea>
+                <span class="text-danger"> @error('comment_body') {{$message}} @enderror</span>
+                </div>
             </div>       
         </div>
         <div class="card-footer text-right">

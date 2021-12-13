@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 use Image;
-
 class PostController extends Controller
 {
     /**
@@ -69,6 +68,7 @@ class PostController extends Controller
     		Image::make($image)->resize(300, 300)->save( public_path('images/' . $filename ) );
         }
         	
+
         $newPost = new Post;
         $newPost->post_body = $validatedData['post_body'];
         $newPost->view_count=0;

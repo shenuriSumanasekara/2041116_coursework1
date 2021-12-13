@@ -69,9 +69,12 @@
 </div>
 <div class ="container mt-8 card">
 @if(Session::has('success'))
-    <div class="alert alert-success">{{Session::get('success')}}
-    </div>
+    <div class="alert alert-success">{{Session::get('success')}}</div>
 @endif
+@if(Session::has('fail'))
+    <div class="alert alert-danger">{{Session::get('fail')}}</div>
+@endif
+
 </div>
 <div class ="container mt-3 card">
     <div class="card-header font-family: cursive;">
@@ -84,7 +87,9 @@
                 <div>
                 <input type="hidden" name="user_id" value="{{$user->id}}"> 
                 </div>
-                <textarea name="post_body" id="post_body" cols="100" rows="5" placeholder="Tell about your mischievous paw friend...."></textarea>
+                <div class="form-group"><textarea class="form-control" name="post_body"  id="post_body" cols="100" rows="5" placeholder="Tell about your mischievous paw friend...."></textarea>
+                <span class="text-danger"> @error('post_body') {{$message}} @enderror</span>
+                </div>  
             </div>       
         </div>
         <div class="card-footer">
