@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
+use App\Notifications\NewReplyAdded;
 
 class CommentController extends Controller
 {
@@ -71,7 +72,11 @@ class CommentController extends Controller
         $newComment->save();
         //return post_id;
         //session()->flash('messsage', 'Posted!');
-
+        
+        $findpost = Post::find($newComment->post_id);
+        $user =  User::where('id','=', $findpost->user_id)->first();
+        $user->notify(new NewReplyAdded);
+        
         return redirect('/posts/index/getUserDetails');
        
     }
