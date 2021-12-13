@@ -43,7 +43,7 @@
         font-family: cursive !important;
         font-weight: bold !important;
         font-size: 20 !important;
-        }
+    }
 </style>
 
 @extends('layouts.app')
@@ -77,7 +77,7 @@
     <div class="card-header font-family: cursive;">
     Create Post
     </div>
-    <form method="post" action="{{ url('posts')}}">
+    <form method="post" enctype="multipart/form-data"  action="{{ url('posts')}}">
     @csrf
         <div class="card-body">
             <div class="form-group">
@@ -87,9 +87,18 @@
                 <textarea name="post_body" id="post_body" cols="100" rows="5" placeholder="Tell about your mischievous paw friend...."></textarea>
             </div>       
         </div>
-        <div class="card-footer text-right">
-            <button type="submit" class="btn-post btn btn-primary" style="width:100px">Post</button>
-        </div>
+        <div class="card-footer">
+            <ul style="background-color:white">
+            <div>
+                <a class="btnv text-left" href="#" ><i class="fa fas fa-image fa-3x " aria-hidden="true" style="margin-left:20px; color:#1A64BE"></i></a>
+                    <input type="file" name="image">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            </div>
+            </ul>   
+            <ul style="background-color:white">
+            <button type="submit" class="btn-post btn btn-primary" style="float:right; width:100px">Post</button>
+            </ul>
+    </div>
     </form>
 </div>
     <div class="container mt-3 card">
@@ -114,13 +123,22 @@
                                     <div class="comment-post">
                                         <h3 style="color:#1A64BE">{{$post->post_body}}</h3>
                                     </div>
-                                        <div> 
+                                    <div>
+                                        @if($post->image)
+                                        <img src="/images/{{$post->image}}" style="width:400px; height:400px; float:center; border:1px solid black; ,margin-bottom:10px; padding:4px; "></a>
+                                        @endif
+                                    </div>
+                                    
+                                    <div style="margin-top:10px"> 
                                         <a class="btn btn-default btn-sm" style="border: #8B5FEA;  font-size : 11px;  color:#8B5FEA " href="/comments/{{$post->id}}/{{$user->id}}"><i class="fa fa-comments-o fa-2x" aria-hidden="true" style="color:#8B5FEA "></i>   Comments     {{$post->comment_count}}</a>
                                         
                                         <a class="btn" href="/post/like/{{$post->id}}" style="border: #1A64BE; color:#1A64BE font-size : 11px;" ><i class="fa fa-heart fa-2x " aria-hidden="true" style="color:#1A64BE"></i> Like    {{$post->like_count}}</a>
+
+                                        @if($user->id == $post->user_id)
                                         <a class="btnv" href="/update/{{$post->id}}" ><i class="fa fas fa-edit fa-2x " aria-hidden="true" style="margin-left: 80px;  color:#1A64BE"></i></a>
                                         <a class="btnv" href="/delete/{{$post->id}}"><i class="fa fas fa-trash fa-2x " aria-hidden="true" style="color:#1A64BE"></i></a>
-                                        </div>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +147,6 @@
             @endforeach
         </ul> 
     </div>
-    </div>
-  
-    @endsection
+ </div>
+@endsection
        

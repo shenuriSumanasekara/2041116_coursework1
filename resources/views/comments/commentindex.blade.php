@@ -70,7 +70,7 @@
               </div>
             </div>
           </article>
-          <!-- Second Comment Reply -->
+          <!-- Comments -->
           <ul>
             @foreach($post->comments as $comment)
                 <li>
@@ -89,12 +89,12 @@
                                   <time class="comment-date" ><i class="fa fa-clock-o"></i>{{$comment->created_at}}</time>
                               </header>
                               <div class="comment-post">
-                                  <p>
-                                  {{$comment->comment_body}}
-                                  </p>
+                                  <p> {{$comment->comment_body}}</p>
                               </div>
-                              <a class="btnv" href="/update/comment/{{$comment->id}}" ><i class="fa fas fa-edit fa-2x " aria-hidden="true" style="margin-left: 100px;color:#1A64BE"></i></a>
-                              <a class="btnv" href="/delete/comment/{{$comment->id}}"><i class="fa fas fa-trash fa-2x " aria-hidden="true" style="color:#1A64BE"></i></a>
+                              @if($user->id == $comment->user_id)
+                                <a class="btnv" href="/update/comment/{{$comment->id}}" ><i class="fa fas fa-edit fa-2x " aria-hidden="true" style="margin-left: 100px;color:#1A64BE"></i></a>
+                                <a class="btnv" href="/delete/comment/{{$comment->id}}"><i class="fa fas fa-trash fa-2x " aria-hidden="true" style="color:#1A64BE"></i></a>
+                              @endif
                             </div>
                         </div>
                         </div>

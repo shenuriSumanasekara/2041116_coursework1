@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
+use Image;
 
 class PostController extends Controller
 {
@@ -16,14 +17,18 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all()->sortByDesc("created_at");
-        
+        return view('posts.index',['posts' =>$posts]);
+
+       // $posts = Post::all()->sortByDesc("created_at");
+       //$posts = Post::orderByDesc("created_at")->paginate(5);
+        /*
         foreach ($posts as $post){
             $otheruser = User::where('id','=', $post->user_id)->first();
             return view('posts.index',['posts' =>$posts],['otheruser' => $otheruser]);
             //return $otheruser;
         }
         
-
+        */
         //$posts = Post::orderBy("created_at")->paginate(5);
         //return view('posts.index')->with('posts' , $posts);
 
@@ -58,11 +63,18 @@ class PostController extends Controller
             'post_body' => 'required|max:500',
         ]);
 
+        if($request->hasFile('image')){
+    		$image = $request->file('image');
+    		$filename = time() . '.' . $image->getClientOriginalExtension();
+    		Image::make($image)->resize(300, 300)->save( public_path('images/' . $filename ) );
+        }
+        	
         $newPost = new Post;
         $newPost->post_body = $validatedData['post_body'];
         $newPost->view_count=0;
         $newPost->like_count=0;
         $newPost->comment_count=0;
+        $newPost->image = $filename;
         $newPost->user_id=$request->user_id;
         $newPost->save();
 
@@ -123,7 +135,7 @@ class PostController extends Controller
     public function like(Request $request, $post_id)
     {
         Post::find($post_id)->increment('like_count');
-        return redirect('/posts/index/getUserDetails');
+         return redirect('/posts/index/getUserDetails');
         /*
         $action = $request->get('action');
         switch ($action) {
