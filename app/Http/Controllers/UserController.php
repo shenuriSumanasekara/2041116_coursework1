@@ -92,7 +92,7 @@ class UserController extends Controller
         if($user){
             if(Hash::check($request->password,$user->password)){
                 $request->session()->put('user_id',$user->id);
-                return redirect('/posts/index/getUserDetails')->with('success', 'Welcome Back Paw Friend!');
+                return redirect('/posts/index/getUserDetails')->withSuccess('success', 'Welcome Back Paw Friend!');
             }else{
                 return back()->with('fail', 'Your Username or Password is Incorrect!');
             }

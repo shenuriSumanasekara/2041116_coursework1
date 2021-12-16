@@ -85,7 +85,7 @@
         <div class="card-body">
             <div class="form-group">
                 <div>
-                <input type="hidden" name="user_id" value="{{$user->id}}"> 
+                    <input type="hidden" name="user_id" value="{{$user->id}}"> 
                 </div>
                 <div class="form-group"><textarea class="form-control" name="post_body"  id="post_body" cols="100" rows="5" placeholder="Tell about your mischievous paw friend...."></textarea>
                 <span class="text-danger"> @error('post_body') {{$message}} @enderror</span>

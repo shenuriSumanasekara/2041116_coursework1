@@ -26,8 +26,16 @@
                 @else
                     <li><a class="active" href="{{ url('/')}}"><i class="fa fa-fw fa-lock"></i>Login</a></li>
                 @endif
+                
+                @if(Session()->has('user'))
                 <li><a href="/users/profile/{{$user->id}}"><i class="fa fa-fw fa-user"></i>My Profile</a></li>
-                <li><a href="#home"><i class="fa fa-fw fa-home"></i>Home</a></li>
+                @else
+                <li><a href="/"><i class="fa fa-fw fa-user"></i>My Profile</a></li>
+                @endif
+                <li><a href="#"><i class="fa fa-fw fa-home"></i>Home</a></li>
+               
+
+
             </ul>
         </div>
         
