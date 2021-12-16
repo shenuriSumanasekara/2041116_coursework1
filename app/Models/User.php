@@ -51,4 +51,9 @@ class User extends Authenticatable
     public function comments(){
         return $this -> hasMany(Comment::class);
     }
+
+    //1.1 relationship with user and mobile number
+    public function mobile(){
+        return $this -> hasOne(Mobile::class);
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Mobile;
 use Hash;
 use Session;
 use Image;
@@ -62,9 +63,12 @@ class UserController extends Controller
         $newUser->username = $validatedData['username'];
         $newUser->email = $validatedData['email'];
         $newUser->password = Hash::make($validatedData['password']);
-        $newUser->phone_number = $validatedData['phone_number'];
         $newUser->dob = $validatedData['dob'];
         $newUser->save();
+
+        $newMobile = new Mobile;
+        $newMobile->phone_number = $validatedData['phone_number'];
+        $newUser->mobile()->save($newMobile);
 
         if($newUser){
             $request->session()->put('user_id',$newUser->id);

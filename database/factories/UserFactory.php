@@ -22,7 +22,6 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => $this->faker->password(),
-            'phone_number' => $this->faker->phoneNumber(),
             'dob' => $this->faker->dateTimeBetween($startDate = '-100 years', $endDate = '-18 years', $timezone = null),
             'user_image' => $this->faker->image('public/prof',400, 300, null, false),
             'is_admin'=> $this->faker->boolean(),
