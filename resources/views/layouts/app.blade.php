@@ -22,11 +22,11 @@
             <ul style="height:50px"> 
                 <li  style="float:left; font-family:cursive; font-weight:bold; color:#44689e"><a href="#home"><i class="fa fa-fw fa-paw"></i>Puppy Media</a></li>
                 @if(Session()->has('user'))
-                <li><a class="active" href="{{ url('/logout')}}"><i class="fa fa-fw fa-lock"></i>Logout</a></li>
+                    <li><a class="active" href="{{ url('/logout')}}"><i class="fa fa-fw fa-lock"></i>Logout</a></li>
                 @else
-                <li><a class="active" href="{{ url('/')}}"><i class="fa fa-fw fa-lock"></i>Login</a></li>
+                    <li><a class="active" href="{{ url('/')}}"><i class="fa fa-fw fa-lock"></i>Login</a></li>
                 @endif
-                <li><a href="#"><i class="fa fa-fw fa-user"></i>My Profile</a></li>
+                <li><a href="/users/profile/{{$user->id}}"><i class="fa fa-fw fa-user"></i>My Profile</a></li>
                 <li><a href="#home"><i class="fa fa-fw fa-home"></i>Home</a></li>
             </ul>
         </div>

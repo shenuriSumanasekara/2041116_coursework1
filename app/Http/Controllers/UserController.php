@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -107,8 +107,13 @@ class UserController extends Controller
         $user= array();
         if(Session::has('user_id')){
             $user = User::where('id','=',Session::get('user_id'))->first();
+            if($user->is_admin==0){
+                return redirect('/posts/index')->with(['user'=>$user]);
+            }else{
+                return View('users.admin', ['user'=> $user]);
+            }
         }
-        return redirect('/posts/index')->with(['user'=>$user]);
+            
     }
 
 

@@ -61,6 +61,11 @@ Route::post('/users/profile/{user_id}', [UserController::class,'profileUpdate'])
 
 Route::get('/post/like/{post_id}',[PostController::class,'like']);
 
+
+Route::get('/admin', function () {
+    return view('users.admin');
+});
+
 Route::get('/logout', function () {
     if(Session()->has('user')){
         session()->pull('user');

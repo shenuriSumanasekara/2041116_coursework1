@@ -80,7 +80,7 @@
     <div class="card-header font-family: cursive;">
     Create Post
     </div>
-    <form method="post" enctype="multipart/form-data"  action="{{ url('posts')}}">
+    <form method="post" id="postForm" enctype="multipart/form-data"  action="{{ url('posts')}}">
     @csrf
         <div class="card-body">
             <div class="form-group">
