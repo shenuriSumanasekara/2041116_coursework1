@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
+use App\Notifications\NewReplyAdded;
+use App\Models\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +22,58 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/users/create', [UserController::class,'create']);
+
+Route::post('/users', [UserController::class,'store']);
+
+Route::post('/welcome',[UserController::class,'userLogin']);
+
+Route::get('/posts/create',[PostController::class,'create']);
+
+Route::post('/posts',[PostController::class,'store']);
+
+Route::get('/posts/index',[PostController::class,'index']);
+
+Route::get('/posts/index/getUserDetails',[UserController::class,'getUserDetails']);
+
+Route::get('/delete/{post_id}',[PostController::class,'delete']);
+
+Route::get('/update/{post_id}',[PostController::class,'show']);
+
+Route::post('/update',[PostController::class,'update']);
+
+Route::post('/posts/post_id',[UserController::class,'userLogin']);
+
+Route::get('/comments/{post_id}/{user_id}',[CommentController::class,'index']);
+
+Route::post('/comments/{post_id}',[CommentController::class,'store']);
+
+Route::get('/delete/comment/{comment_id}',[CommentController::class,'delete']);
+
+Route::get('/update/comment/{comment_id}',[CommentController::class,'show']);
+
+Route::post('/update/comment',[CommentController::class,'update']);
+
+Route::get('/users/profile/{user_id}', [UserController::class,'profile']);
+
+Route::post('/users/profile/{user_id}', [UserController::class,'profileUpdate']);
+
+Route::get('/post/like/{post_id}',[PostController::class,'like']);
+
+
+Route::get('/admin', function () {
+    return view('users.admin');
+});
+
+Route::get('/logout', function () {
+    if(Session()->has('user')){
+        session()->pull('user');
+    }
+    return redirect('/');
+});
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

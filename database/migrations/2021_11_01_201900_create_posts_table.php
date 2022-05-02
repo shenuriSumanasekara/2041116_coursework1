@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->integer('view_count');
             $table->integer('like_count');
             $table->integer('comment_count');
+            $table->string('image')->nullable();
             $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
 
