@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Images;
 
 class Post extends Model
 {
@@ -17,5 +18,10 @@ class Post extends Model
     //1:m relationship with comments and posts
     public function comments(){
         return $this -> hasMany(Comment::class);
+    }
+
+    public function tags(){
+        $this->belongsToMany(Tag::class);
+
     }
 }
